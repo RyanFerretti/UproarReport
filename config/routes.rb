@@ -2,7 +2,9 @@ UproarReport::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
-  devise_for :users, ActiveAdmin::Devise.config
+  devise_for :administrators, ActiveAdmin::Devise.config
+  devise_for :reporters, ActiveAdmin::Devise.config
+  devise_for :sponsors, ActiveAdmin::Devise.config
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
