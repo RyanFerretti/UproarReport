@@ -1,2 +1,0 @@
-class Sponsor < User
-end

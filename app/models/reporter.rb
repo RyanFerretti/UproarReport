@@ -1,2 +1,0 @@
-class Reporter < User
-end
