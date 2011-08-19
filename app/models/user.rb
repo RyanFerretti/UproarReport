@@ -6,7 +6,11 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :role
 
-  scope :roles, lambda{[["Administrator",ADMIN],["Reporter",REPORTER]["Sponsor",SPONSOR]]}
+  validates_presence_of :role
+
+  def self.roles
+    {"Administrator" => ADMIN, "Reporter" => REPORTER, "Sponsor" => SPONSOR}
+  end
 
   def admin?
     is_role?(ADMIN)
