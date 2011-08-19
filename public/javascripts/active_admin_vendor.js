@@ -165,6 +165,9 @@ jQuery(function ($) {
          * Triggers a custom event on an element and returns the event result
          * this is used to get around not being able to ensure callbacks are placed
          * at the end of the chain.
+         *
+         * TODO: deprecate with jQuery 1.4.2 release, in favor of subscribing to our
+         *       own events and placing ourselves at the end of the chain.
          */
         triggerAndReturn: function (name, data) {
             var event = new $.Event(name);
