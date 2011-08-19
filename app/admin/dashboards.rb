@@ -7,6 +7,9 @@ ActiveAdmin::Dashboards.build do
   section "Crap" do
     ul do
       li "Hello!"
+      li "Admin!" if current_user.admin?
+      li "Reporter!" if current_user.reporter?
+      li "Sponsor!" if current_user.sponsor?
     end
   end
   
