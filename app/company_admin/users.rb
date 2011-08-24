@@ -1,4 +1,4 @@
-ActiveAdmin.register User, :namespace=>:admin do
+ActiveAdmin.register User, :namespace=>:company_admin do
   #menu false if current_user.admin?
   actions :index
   

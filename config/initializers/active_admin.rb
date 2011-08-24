@@ -21,7 +21,7 @@ ActiveAdmin.setup do |config|
   #
   # To set no namespace by default, use:
   #   config.default_namespace = false
-  config.default_namespace = false
+  config.default_namespace = :admin
 
 
   # == User Authentication
@@ -75,4 +75,7 @@ ActiveAdmin.setup do |config|
   #
   # To load a javascript file:
   #   config.register_javascript 'my_javascript.js'
+
+  # == Load Namespaces
+  config.load_paths = [File.expand_path('app/admin', Rails.root),File.expand_path('app/company_admin', Rails.root),]
 end
