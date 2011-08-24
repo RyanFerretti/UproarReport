@@ -7,13 +7,17 @@ class ApplicationController < ActionController::Base
     user = current_user
     if user
       unless user_allowed_for_path?(user,request.fullpath)
-        render :status => :forbidden
+        redirect_to root_path_for_user(user)
       else
         authenticate_user!
       end
     else
       authenticate_user!
     end
+  end
+
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) || root_path_for_user(resource)
   end
 
   private
@@ -30,5 +34,17 @@ class ApplicationController < ActionController::Base
       allowed = true
     end
     allowed
+  end
+
+  def root_path_for_user(resource)
+    if resource.admin?
+      admin_dashboard_path
+    elsif resource.company_admin?
+      company_admin_dashboard_path
+    elsif resource.company_rep?
+      company_rep_dashboard_path
+    elsif resource.tour_rep?
+      tour_rep_dashboard_path
+    end
   end
 end
