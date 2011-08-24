@@ -3,6 +3,15 @@ ActiveAdmin::Dashboards.build do
   # Define your dashboard sections here. Each block will be
   # rendered on the dashboard in the context of the view. So just
   # return the content which you would like to display.
+
+  section "Crap" do
+    ul do
+      li "Hello!"
+      li "Admin!" if current_user.admin?
+      li "Reporter!" if current_user.reporter?
+      li "Sponsor!" if current_user.sponsor?
+    end
+  end
   
   # == Simple Dashboard Section
   # Here is an example of a simple dashboard section

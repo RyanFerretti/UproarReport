@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110819184531) do
+ActiveRecord::Schema.define(:version => 20110819200237) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -38,9 +38,11 @@ ActiveRecord::Schema.define(:version => 20110819184531) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "type"
+    t.string   "first_name",             :limit => 50
+    t.string   "last_name",              :limit => 50
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "role"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
