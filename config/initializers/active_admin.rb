@@ -79,5 +79,6 @@ ActiveAdmin.setup do |config|
   # == Load Namespaces
   config.load_paths = [File.expand_path('app/admin', Rails.root),
                        File.expand_path('app/company_admin', Rails.root),
-                       File.expand_path('app/company_rep', Rails.root),]
+                       File.expand_path('app/company_rep', Rails.root),
+                       File.expand_path('app/tour_rep', Rails.root),]
 end

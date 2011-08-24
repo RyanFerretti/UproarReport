@@ -1,7 +1,5 @@
 ActiveAdmin.register User, :namespace=>:admin do
-  #menu false if current_user.admin?
-  actions :index
-  
+
   index do
     column :email
     column :current_sign_in_at
