@@ -1,4 +1,8 @@
 UproarReport::Application.routes.draw do
+
+  #match "/login" => "active_admin/devise/sessions#new"
+  #match "/logout" => "active_admin/devise/sessions#destroy"
+
   devise_for :users, ActiveAdmin::Devise.config
 
   ActiveAdmin.routes(self)
@@ -52,7 +56,7 @@ UproarReport::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "welcome#index"
+  #root :to => "welcome#index"
 
   # See how all your routes lay out with "rake routes"
 
