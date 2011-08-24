@@ -29,9 +29,10 @@ class User < ActiveRecord::Base
   end
 private
 
-  ADMIN = 2
-  REPORTER = 1
-  SPONSOR = 0
+  TOUR_REP = 3
+  COMPANY_REP = 2
+  COMPANY_ADMIN = 1
+  ADMIN = 0
   
   def is_role?(r)
       role == r

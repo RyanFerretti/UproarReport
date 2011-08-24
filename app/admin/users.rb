@@ -1,10 +1,13 @@
 ActiveAdmin.register User do
+  #menu false if current_user.admin?
+  actions :index
+  
   index do
     column :email
     column :current_sign_in_at
     column :last_sign_in_at
     column :sign_in_count
-    default_actions
+    default_actions if current_user.admin?
   end
 
   form do |f|
@@ -14,4 +17,4 @@ ActiveAdmin.register User do
     end
     f.buttons
   end
-end
+end 
