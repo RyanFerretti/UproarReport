@@ -53,7 +53,7 @@ ActiveAdmin.setup do |config|
   # namespace only. You can turn them on in a namesapce
   # by adding them to the comments array.
   #
-  # config.allow_comments_in = [:admin]
+  config.allow_comments_in = [:admin,:company_admin,:company_rep,:tour_rep]
 
 
   # == Controller Filters
@@ -75,4 +75,10 @@ ActiveAdmin.setup do |config|
   #
   # To load a javascript file:
   #   config.register_javascript 'my_javascript.js'
+
+  # == Load Namespaces
+  config.load_paths = [File.expand_path('app/admin', Rails.root),
+                       File.expand_path('app/company_admin', Rails.root),
+                       File.expand_path('app/company_rep', Rails.root),
+                       File.expand_path('app/tour_rep', Rails.root),]
 end

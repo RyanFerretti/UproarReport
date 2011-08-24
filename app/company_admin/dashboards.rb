@@ -4,9 +4,9 @@ ActiveAdmin::Dashboards.build do
   # rendered on the dashboard in the context of the view. So just
   # return the content which you would like to display.
 
-  section "Crap", :namespace=>:admin do
+  section "Crap", :namespace=>:company_admin do
     ul do
-      li "Hello Admin!"
+      li "Hello Company Admin!"
     end
   end
   
