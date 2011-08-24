@@ -77,5 +77,7 @@ ActiveAdmin.setup do |config|
   #   config.register_javascript 'my_javascript.js'
 
   # == Load Namespaces
-  config.load_paths = [File.expand_path('app/admin', Rails.root),File.expand_path('app/company_admin', Rails.root),]
+  config.load_paths = [File.expand_path('app/admin', Rails.root),
+                       File.expand_path('app/company_admin', Rails.root),
+                       File.expand_path('app/company_rep', Rails.root),]
 end
