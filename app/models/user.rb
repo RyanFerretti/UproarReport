@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates_presence_of :role
 
   def self.roles
-    {"Administrator" => ADMIN, "Reporter" => REPORTER, "Sponsor" => SPONSOR}
+    {"Administrator" => ADMIN, "Company Admin" => COMPANY_ADMIN, "Company Rep" => COMPANY_REP, "Tour Rep" => TOUR_REP}
   end
 
   def admin?
@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
   def password_required?
     new_record? ? false : super
   end
+  
 private
 
   TOUR_REP = 3
