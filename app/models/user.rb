@@ -16,12 +16,16 @@ class User < ActiveRecord::Base
     is_role?(ADMIN)
   end
 
-  def reporter?
-    is_role?(REPORTER)
+  def tour_rep?
+    is_role?(TOUR_REP)
   end
 
-  def sponsor?
-    is_role?(SPONSOR)
+  def company_rep?
+    is_role?(COMPANY_REP)
+  end
+
+  def company_admin?
+    is_role?(COMPANY_ADMIN)
   end
 
   def password_required?
