@@ -1,8 +1,14 @@
 # users
 unless Rails.env.production?
+  c = Company.create!(:name => "Rockstar")
+  Company.create!(:name => "Best Buy")
+  Company.create!(:name => "Jagermeister")
+  Company.create!(:name => "Ernie Ball")
+  Company.create!(:name => "Zippo")
+
   User.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password', :first_name => "admin", :last_name => "person", :role => User::ADMIN)
-  User.create!(:email => 'company_admin@example.com', :password => 'password', :password_confirmation => 'password', :first_name => "company", :last_name => "admin", :role => User::COMPANY_ADMIN)
-  User.create!(:email => 'company_rep@example.com', :password => 'password', :password_confirmation => 'password', :first_name => "company", :last_name => "rep", :role => User::COMPANY_REP)
+  User.create!(:email => 'company_admin@example.com', :password => 'password', :password_confirmation => 'password', :first_name => "company", :last_name => "admin", :role => User::COMPANY_ADMIN, :company_id => c.id)
+  User.create!(:email => 'company_rep@example.com', :password => 'password', :password_confirmation => 'password', :first_name => "company", :last_name => "rep", :role => User::COMPANY_REP, :company_id => c.id)
   User.create!(:email => 'tour_rep@example.com', :password => 'password', :password_confirmation => 'password', :first_name => "tour", :last_name => "rep", :role => User::TOUR_REP)
 end
 puts "#{User.count} users created"
