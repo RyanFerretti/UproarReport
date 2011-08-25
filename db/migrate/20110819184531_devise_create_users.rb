@@ -9,8 +9,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :first_name, :limit => 50
       t.string :last_name, :limit => 50
 
-      t.type
-      
       t.timestamps
     end
 
