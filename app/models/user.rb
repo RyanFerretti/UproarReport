@@ -1,10 +1,12 @@
 class User < ActiveRecord::Base
 
+  belongs_to :company
+
   after_create { |admin| admin.send_reset_password_instructions }
 
   devise :database_authenticatable,:recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_me, :role
+  attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_me, :role, :company_id
 
   validates_presence_of :first_name
   validates_presence_of :last_name
