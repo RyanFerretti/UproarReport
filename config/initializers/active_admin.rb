@@ -61,12 +61,12 @@ ActiveAdmin.setup do |config|
   # You can add before, after and around filters to all of your
   # Active Admin resources from here. 
   #
-  # config.before_filter :do_something_awesome
+  # config.before_filter :setup_view_data
 
 
   # == Register Stylesheets & Javascripts
   #
-  # We recomend using the built in Active Admin layout and loading
+  # We recommend using the built in Active Admin layout and loading
   # up your own stylesheets / javascripts to customize the look
   # and feel.
   #
@@ -81,4 +81,8 @@ ActiveAdmin.setup do |config|
                        File.expand_path('app/company_admin', Rails.root),
                        File.expand_path('app/company_rep', Rails.root),
                        File.expand_path('app/tour_rep', Rails.root),]
+
+  config.logout_link_path = :destroy_user_session_path
+  config.logout_link_method = :delete
+
 end
