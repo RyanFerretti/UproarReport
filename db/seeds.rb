@@ -1,18 +1,3 @@
-# users
-unless Rails.env.production?
-  c = Company.create!(:name => "Rockstar")
-  Company.create!(:name => "Best Buy")
-  Company.create!(:name => "Jagermeister")
-  Company.create!(:name => "Ernie Ball")
-  Company.create!(:name => "Zippo")
-
-  User.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password', :first_name => "admin", :last_name => "person", :role => User::ADMIN)
-  User.create!(:email => 'company_admin@example.com', :password => 'password', :password_confirmation => 'password', :first_name => "company", :last_name => "admin", :role => User::COMPANY_ADMIN, :company_id => c.id)
-  User.create!(:email => 'company_rep@example.com', :password => 'password', :password_confirmation => 'password', :first_name => "company", :last_name => "rep", :role => User::COMPANY_REP, :company_id => c.id)
-  User.create!(:email => 'tour_rep@example.com', :password => 'password', :password_confirmation => 'password', :first_name => "tour", :last_name => "rep", :role => User::TOUR_REP)
-end
-puts "#{User.count} users created"
-
 # August Tour Dates
 TourDate.create!(:city => "Camden", :state => "NJ", :venue => "Susquehanna Bank Center", :date => "2011-08-26")
 TourDate.create!(:city => "Scranton", :state => "PA", :venue => "Toyota Pavilion", :date => "2011-08-27")
@@ -48,3 +33,18 @@ TourDate.create!(:city => "San Diego", :state => "CA", :venue => "Cricket Wirele
 TourDate.create!(:city => "Sacramento", :state => "CA", :venue => "Sleep Train Amphitheatre", :date => "2011-10-13")
 TourDate.create!(:city => "Mountain View", :state => "CA", :venue => "Shoreline Amphitheater", :date => "2011-10-14")
 puts "#{TourDate.count} tour dates created"
+
+# users
+unless Rails.env.production?
+  c = Company.create!(:name => "Rockstar")
+  Company.create!(:name => "Best Buy")
+  Company.create!(:name => "Jagermeister")
+  Company.create!(:name => "Ernie Ball")
+  Company.create!(:name => "Zippo")
+
+  User.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password', :first_name => "admin", :last_name => "person", :role => User::ADMIN)
+  User.create!(:email => 'company_admin@example.com', :password => 'password', :password_confirmation => 'password', :first_name => "company", :last_name => "admin", :role => User::COMPANY_ADMIN, :company_id => c.id)
+  User.create!(:email => 'company_rep@example.com', :password => 'password', :password_confirmation => 'password', :first_name => "company", :last_name => "rep", :role => User::COMPANY_REP, :company_id => c.id)
+  User.create!(:email => 'tour_rep@example.com', :password => 'password', :password_confirmation => 'password', :first_name => "tour", :last_name => "rep", :role => User::TOUR_REP)
+end
+puts "#{User.count} users created"

@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
 
   scope :rep_for_company, lambda {|company_id| where(:company_id => company_id).where(:role => COMPANY_REP)}
 
-  before_create { |u| u.role = COMPANY_REP if role.nil?; puts "AHHH #{u.role}"}
-  after_create { |u| u.send_reset_password_instructions;  puts "SAVED! #{u.role}"}
+  before_create { |u| u.role = COMPANY_REP if role.nil? }
+  after_create { |u| u.send_reset_password_instructions }
 
   devise :database_authenticatable,:recoverable, :rememberable, :trackable, :validatable
 

@@ -1,7 +1,7 @@
 UproarReport::Application.routes.draw do
 
   #match "/login" => "active_admin/devise/sessions#new"
-  #match "/logout" => "active_admin/devise/sessions#destroy"
+  match "admin/logout" => "active_admin/devise/sessions#destroy", :via => :delete, :as => :destroy_admin_user_session
 
   devise_for :users, ActiveAdmin::Devise.config
 

@@ -82,7 +82,7 @@ ActiveAdmin.setup do |config|
                        File.expand_path('app/company_rep', Rails.root),
                        File.expand_path('app/tour_rep', Rails.root),]
 
-  config.logout_link_path = :destroy_user_session_path
-  config.logout_link_method = :delete
+  #config.logout_link_path = :logout_path
+  #config.logout_link_method = :get
 
 end

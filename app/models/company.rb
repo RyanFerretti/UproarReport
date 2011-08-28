@@ -1,5 +1,7 @@
 class Company < ActiveRecord::Base
 
+  after_create :create_reports!
+
   has_many :reports
 
   attr_accessible :name
@@ -18,5 +20,11 @@ private
 
   def find_user(role)
     User.where(:company_id => id).where(:role => role).first
+  end
+
+  def create_reports!
+    TourDate.order(:id).all.each do |td|
+      Report.create!(:tour_date => td, :company => self)
+    end
   end
 end
