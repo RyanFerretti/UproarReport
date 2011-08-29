@@ -9,4 +9,8 @@ class TourDate < ActiveRecord::Base
   def name
     "#{city}, #{state}"
   end
+
+  def full_name
+    "Report for #{date.strftime("%m/%d/%Y")} #{venue} - #{city}, #{state}"
+  end
 end
