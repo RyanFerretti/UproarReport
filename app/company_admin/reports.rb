@@ -10,7 +10,7 @@ ActiveAdmin.register Report, :namespace=>:company_admin do
 
   index do
     column :tour_date
-    column :company
+    column("State") {|report| status_tag(report.state) }
     column "Actions" do |report|
       link_to "View", company_admin_report_path(report)
     end

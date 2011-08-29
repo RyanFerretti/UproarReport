@@ -4,6 +4,8 @@ gem 'rails', '3.0.9'
 gem 'activeadmin'
 gem 'cancan'
 gem 'haml-rails'
+gem 'state_machine'
+gem 'jquery-rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
