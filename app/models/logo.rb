@@ -1,7 +1,5 @@
-require 'paperclip_processors/watermark'
-
-class Picture < ActiveRecord::Base
-  belongs_to :report
+class Logo < ActiveRecord::Base
+  belongs_to :company
   has_attached_file :image
                     #:processors => [:watermark],
                     #:styles => { :thumb => "90x120>", :cthumb => "90x120#", #:small => "100x100>",# :original => "800x600>",

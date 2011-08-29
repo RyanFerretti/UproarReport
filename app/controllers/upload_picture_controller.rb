@@ -2,7 +2,8 @@ class UploadPictureController < ApplicationController
 
   # POST /pictures
   def create
-    @picture = Picture.find(params[:picture])
+    @report = Report.find(params[:report_id])
+    @picture = @report.pictures.build(params[:picture])
 
     if @picture.save
       head :ok

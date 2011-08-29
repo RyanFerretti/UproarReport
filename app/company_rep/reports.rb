@@ -25,5 +25,6 @@ ActiveAdmin.register Report, :namespace=>:company_rep do
       raw "#{link_to "View", company_rep_report_path(report)} #{link_to "Edit", edit_company_rep_report_path(report)}"
     end
   end
-  
+
+  sidebar :upload_pictures, :only => :edit, :partial => "/upload_picture/uploader"
 end
