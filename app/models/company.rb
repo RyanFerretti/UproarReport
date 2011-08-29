@@ -8,7 +8,7 @@ class Company < ActiveRecord::Base
 
   accepts_nested_attributes_for :email_contacts
 
-  attr_accessible :name
+  attr_accessible :name, :email_contacts_attributes
 
   validates_presence_of :name
 
@@ -30,6 +30,5 @@ private
     TourDate.order(:id).all.each do |td|
       Report.create!(:tour_date => td, :company => self)
     end
-    10.times { EmailContact.create!(:company => self)}
   end
 end

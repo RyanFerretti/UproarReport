@@ -1,8 +1,9 @@
 class PublishedReportMailer < ActionMailer::Base
-  default :from => "from@example.com"
+  default :from => "reports@rockstaruproar.com"
   def report_published_email(report)
-    #groups = report.company.interested_parties
-    
-    mail(:to => user.email, :subject => "Welcome to My Awesome Site")
+    contacts = report.company.email_contacts
+    unless contacts.empty?
+      mail(:to => contacts.map(&:email), :subject => report.tour_date.full_name)
+    end
   end
 end
