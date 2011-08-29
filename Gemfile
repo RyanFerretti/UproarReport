@@ -8,6 +8,7 @@ gem 'state_machine'
 gem 'jquery-rails'
 gem 'paperclip'
 gem 'remotipart'
+gem 'heroku'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
