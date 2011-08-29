@@ -11,7 +11,6 @@ ActiveAdmin.register Report, :namespace=>:company_rep do
   member_action :publish, :method => :put do
     report = Report.find(params[:id])
     report.publish
-    #report.save!
     redirect_to :action => :show, :notice => "This Report has been Published!"
   end
 
