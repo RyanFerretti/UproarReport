@@ -71,10 +71,10 @@ ActiveAdmin.setup do |config|
   # and feel.
   #
   # To load a stylesheet:
-  #   config.register_stylesheet 'my_stylesheet.css'
+  config.register_stylesheet 'custom-active-admin.css'
   #
   # To load a javascript file:
-  #   config.register_javascript 'my_javascript.js'
+  config.register_javascript 'custom-active-admin.js'
 
   # == Load Namespaces
   config.load_paths = [File.expand_path('app/admin', Rails.root),

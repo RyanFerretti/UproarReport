@@ -2,6 +2,8 @@ class Report < ActiveRecord::Base
   belongs_to :tour_date
   belongs_to :company
 
+  has_many :pictures
+
   after_update { |r| r.start if r.not_started? }
 
   attr_accessible :description, :tour_date, :company
