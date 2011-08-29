@@ -17,6 +17,9 @@ class Report < ActiveRecord::Base
     event :publish do
       transition :in_progress => :published
     end
+    after_transition :on => :publish do |report|
+      PublishedReportMailer.report_published_email(report).deliver
+    end
     state :published do
       validates_presence_of :description 
     end
