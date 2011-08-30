@@ -6,9 +6,11 @@ gem 'cancan'
 gem 'haml-rails'
 gem 'state_machine'
 gem 'jquery-rails'
-gem 'paperclip'
+#gem 'paperclip'
+gem "paperclip", :git => "git://github.com/patshaughnessy/paperclip.git"
 gem 'remotipart'
 gem 'heroku'
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

@@ -2,3 +2,11 @@
 .in_progress {
     background-color: #888;
 }
+
+.left {
+    float: left;
+}
+
+.margin-right {
+    margin-right: 10px;
+}

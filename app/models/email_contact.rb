@@ -3,5 +3,5 @@ class EmailContact < ActiveRecord::Base
 
   attr_accessible :email,:company
 
-  validates_presence_of :email
+  #validates_presence_of :email,:company
 end
