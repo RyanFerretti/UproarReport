@@ -4,6 +4,7 @@ class Report < ActiveRecord::Base
 
   has_many :pictures
 
+  before_create :build_url_hash!
   after_create :create_associations!
   after_update { |r| r.start if r.not_started? }
 
@@ -32,5 +33,9 @@ private
 
   def create_associations!
     #pictures.create!
+  end
+
+  def build_url_hash!
+    self.public_url = UrlShortener.generate
   end
 end
