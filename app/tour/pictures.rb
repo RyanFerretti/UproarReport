@@ -5,7 +5,7 @@ ActiveAdmin.register Picture, :namespace=>:tour do
 
   controller do
     def authorize_current_resource!
-      @report = Report.where(:state => :published).where(:public_url => params[:report_hash])
+      @report = Report.where(:state => :published).where(:public_url => params[:report_hash]).first
     end
 
     def scoped_collection
