@@ -20,6 +20,10 @@ class ApplicationController < ActionController::Base
     stored_location_for(resource) || root_path_for_user(resource)
   end
 
+  def authorize_current_resource!
+
+  end
+
   private
 
   def user_allowed_for_path?(user,path)

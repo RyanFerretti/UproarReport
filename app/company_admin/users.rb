@@ -4,6 +4,15 @@ ActiveAdmin.register User, :namespace=>:company_admin, :as => "Representatives" 
   config.clear_sidebar_sections!
 
   controller do
+    def authorize_current_resource!
+      unless request.path_parameters[:action].to_sym == :index
+        user = User.find(params[:id])
+        unless current_user.company_id == user.company_id
+          raise Exception, "You are not authorized to view this."
+        end
+      end
+    end
+
     def scoped_collection
       User.rep_for_company(current_user.company_id)
     end

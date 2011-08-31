@@ -4,8 +4,6 @@ class UploadPictureController < ApplicationController
   def create
     @report = Report.find(params[:report_id])
     @picture = Picture.new(:report_id => params[:report_id], :image => params[:picture][:image])
-    #@picture = @report.pictures.build(params[:picture])
-    puts "PIC! - #{@picture.inspect}"
     if @picture.save
       #head :ok
       redirect_to edit_company_rep_report_url(@report)
