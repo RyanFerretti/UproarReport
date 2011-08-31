@@ -85,4 +85,7 @@ ActiveAdmin.setup do |config|
   #config.logout_link_path = :logout_path
   #config.logout_link_method = :get
 
+  # Add more javascripts
+  config.javascripts << "jquery.iframe-transport.js"
+  config.javascripts << "jquery.remotipart.js"
 end

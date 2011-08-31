@@ -1,3 +1,3 @@
 $(document).ready(function() {
-    $("#company_edit").attr("multipart",true);
+    //$("#company_edit").attr("multipart",true);
 });

@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem "paperclip", :git => "git://github.com/patshaughnessy/paperclip.git"
 gem 'remotipart'
 gem 'heroku'
+gem 'remotipart'
 
 
 # Bundle edge Rails instead:

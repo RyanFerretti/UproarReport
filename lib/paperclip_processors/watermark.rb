@@ -52,9 +52,9 @@ module Paperclip
         begin
           success = Paperclip.run(command, params.flatten.compact.collect{|e| "'#{e}'"}.join(" "))
         rescue PaperclipCommandLineError
-          raise PaperclipError, "There was an error resizing and cropping #{@basename}" if @whiny
+          raise PaperclipError, "There was an error resizing and cropping #{@basename}"
         end
-        
+        puts "QQQQQQQQQ - #{success.inspect}"
         if watermark_path
           command = "composite"
           params = %W[-gravity #{@position} #{watermark_path} #{tofile(dst)}]
@@ -62,8 +62,9 @@ module Paperclip
           begin
             success = Paperclip.run(command, params.flatten.compact.collect{|e| "'#{e}'"}.join(" "))
           rescue PaperclipCommandLineError
-            raise PaperclipError, "There was an error processing the watermark for #{@basename}" if @whiny
+            raise PaperclipError, "There was an error processing the watermark for #{@basename}"
           end
+          puts "WWWWWWW - #{success.inspect}"
         end
         
         dst

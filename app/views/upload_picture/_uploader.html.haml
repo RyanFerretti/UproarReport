@@ -1,6 +1,9 @@
-#file-uploader
-  %noscript
-    %p
-      Please enable JavaScript to use file uploader.</p>
-%script{:type => "text/javascript",:src => "/javascripts/fileuploader.js"}
-%style{:type => "text/css",:src => "/stylesheets/fileuploader.css"}
+= semantic_form_for [:company_rep, @report, Picture.new], :html => {:multipart => true} do |f| #:remote => true
+  = f.inputs do
+    = f.input :image, :as => :file
+    %ol
+      %li.commit
+        <input class="submit" id="pictures_upload" name="commit" type="submit" value="Upload Picture"/>
+  = f.inputs do
+    - @report.pictures.each do |picture|
+      = image_tag picture.image.url(:thumb)
