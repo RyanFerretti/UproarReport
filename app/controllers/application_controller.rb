@@ -4,15 +4,17 @@ class ApplicationController < ActionController::Base
   # need after login hook to send them to the right page!
 
   def authenticate_users!
-    user = current_user
-    if user
-      unless user_allowed_for_path?(user,request.fullpath)
-        redirect_to root_path_for_user(user)
+    unless request.fullpath.match("tour/pictures")
+      user = current_user
+      if user
+        unless user_allowed_for_path?(user,request.fullpath)
+          redirect_to root_path_for_user(user)
+        else
+          authenticate_user!
+        end
       else
         authenticate_user!
       end
-    else
-      authenticate_user!
     end
   end
 

@@ -3,6 +3,9 @@ UproarReport::Application.routes.draw do
   #match "/login" => "active_admin/devise/sessions#new"
   match "admin/logout" => "active_admin/devise/sessions#destroy", :via => :delete, :as => :destroy_admin_user_session
 
+  # galleries
+  get "/tour/pictures/:report_hash" => "tour/pictures#index", :as => :public_tour_pictures
+
   devise_for :users, ActiveAdmin::Devise.config
 
   ActiveAdmin.routes(self)
