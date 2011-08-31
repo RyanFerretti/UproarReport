@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/patshaughnessy/paperclip.git
+  revision: 942a2b43383fd04c0434ca4b27379a114cb28a50
+  specs:
+    paperclip (2.3.6)
+      activerecord
+      activesupport
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -42,7 +50,6 @@ GEM
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
     cancan (1.6.5)
-    cocaine (0.2.0)
     devise (1.4.2)
       bcrypt-ruby (~> 2.1.2)
       orm_adapter (~> 0.0.3)
@@ -88,11 +95,6 @@ GEM
       arel (~> 2.0.2)
     mime-types (1.16)
     orm_adapter (0.0.5)
-    paperclip (2.3.16)
-      activerecord (>= 2.3.0)
-      activesupport (>= 2.3.2)
-      cocaine (>= 0.0.2)
-      mime-types
     polyglot (0.3.2)
     rack (1.2.3)
     rack-mount (0.6.14)
@@ -140,7 +142,7 @@ DEPENDENCIES
   haml-rails
   heroku
   jquery-rails
-  paperclip
+  paperclip!
   rails (= 3.0.9)
   remotipart
   sqlite3

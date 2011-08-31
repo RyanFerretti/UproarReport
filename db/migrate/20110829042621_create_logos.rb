@@ -1,16 +1,15 @@
 class CreateLogos < ActiveRecord::Migration
   def self.up
-    create_table :logos do |t|
-      t.references :company
-      # image
-      t.string :image_file_name
-      t.string :image_content_type
-      t.integer :image_file_size
-      t.datetime :image_updated_at
-    end
+    add_column :companies, :logo_file_name,    :string
+    add_column :companies, :logo_content_type, :string
+    add_column :companies, :logo_file_size,    :integer
+    add_column :companies, :logo_updated_at,   :datetime
   end
 
   def self.down
-    drop_table :logos
+    remove_column :companies, :logo_file_name
+    remove_column :companies, :logo_content_type
+    remove_column :companies, :logo_file_size
+    remove_column :companies, :logo_updated_at
   end
 end

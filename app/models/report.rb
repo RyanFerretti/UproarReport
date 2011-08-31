@@ -4,6 +4,7 @@ class Report < ActiveRecord::Base
 
   has_many :pictures
 
+  after_create :create_associations!
   after_update { |r| r.start if r.not_started? }
 
   attr_accessible :description, :tour_date, :company
@@ -25,5 +26,11 @@ class Report < ActiveRecord::Base
     state :published do
       validates_presence_of :description 
     end
+  end
+
+private
+
+  def create_associations!
+    #pictures.create!
   end
 end

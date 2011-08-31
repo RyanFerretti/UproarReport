@@ -7,7 +7,7 @@ UproarReport::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
-  post "/company_rep/reports/:report_id/pictures" => "upload_picture#create", :as => :upload_picture
+  post "/company_rep/reports/:report_id/pictures" => "upload_picture#create", :as => :company_rep_report_pictures
   put "/company_rep/reports/:report_id/pictures/:picture_id" => "upload_picture#create", :as => :update_uploaded_picture
   delete "/company_rep/reports/:report_id/pictures/:picture_id" => "upload_picture#create", :as => :delete_uploaded_picture
 
