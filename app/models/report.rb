@@ -25,7 +25,11 @@ class Report < ActiveRecord::Base
       transition :in_progress => :published
     end
     after_transition :on => :publish do |report|
-      PublishedReportMailer.report_published_email(report).deliver
+      if user.tour_rep?
+        PublishedReportMailer.tour_report_published_email(report).deliver
+      else
+        PublishedReportMailer.company_report_published_email(report).deliver
+      end
     end
     state :published do
       validates_presence_of :description 
