@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110831204807) do
+ActiveRecord::Schema.define(:version => 20110831220336) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -50,12 +50,14 @@ ActiveRecord::Schema.define(:version => 20110831204807) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "reports", :force => true do |t|
     t.text     "description"
     t.integer  "tour_date_id"
-    t.integer  "company_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "state",        :limit => 20
@@ -67,6 +69,25 @@ ActiveRecord::Schema.define(:version => 20110831204807) do
     t.string   "state",      :limit => 2
     t.string   "venue",      :limit => 50
     t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tour_pictures", :force => true do |t|
+    t.integer  "tour_date_id"
+    t.integer  "user_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tour_reports", :force => true do |t|
+    t.integer  "tour_date_id"
+    t.integer  "user_id"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

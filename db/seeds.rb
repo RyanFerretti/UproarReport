@@ -48,3 +48,5 @@ unless Rails.env.production?
   User.create!(:email => 'tour_rep@example.com', :password => 'password', :password_confirmation => 'password', :first_name => "tour", :last_name => "rep", :role => User::TOUR_REP)
 end
 puts "#{User.count} users created"
+
+puts "#{Report.count} reports created"

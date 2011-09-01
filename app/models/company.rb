@@ -2,7 +2,7 @@ class Company < ActiveRecord::Base
 
   after_create :create_associations!
 
-  has_many :reports
+  has_many :users
   has_many :email_contacts
 
   accepts_nested_attributes_for :email_contacts
@@ -31,9 +31,6 @@ private
   end
 
   def create_associations!
-    TourDate.order(:id).all.each do |td|
-      Report.create!(:tour_date => td, :company => self)
-    end
     10.times {email_contacts.create!}
   end
 end

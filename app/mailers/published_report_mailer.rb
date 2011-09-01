@@ -1,7 +1,7 @@
 class PublishedReportMailer < ActionMailer::Base
   default :from => "reports@rockstaruproar.com"
   def report_published_email(report)
-    contacts = report.company.email_contacts
+    contacts = report.user.company.email_contacts
     unless contacts.empty?
       mail(:to => contacts.select{|c|!c.email.blank?}.map(&:email), :subject => report.tour_date.full_name)
     end

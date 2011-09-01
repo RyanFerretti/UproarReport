@@ -1,6 +1,6 @@
 class Report < ActiveRecord::Base
   belongs_to :tour_date
-  belongs_to :company
+  belongs_to :user
 
   has_many :pictures
 
@@ -8,11 +8,12 @@ class Report < ActiveRecord::Base
   after_create :create_associations!
   after_update { |r| r.start if r.not_started? }
 
-  attr_accessible :description, :tour_date, :company
+  attr_accessible :description, :tour_date, :user
 
-  validates_presence_of :tour_date, :company
+  validates_presence_of :tour_date, :user
 
-  scope :for_company, lambda{|c_id| where(:company_id => c_id) }
+  scope :for_company, lambda{|c_id| joins(:users).where("users.id = ?",c_id) }
+  scope :for_user, lambda{|u_id| where(:user_id => u_id) }
 
   state_machine :state, :initial => :not_started do
     event :start do

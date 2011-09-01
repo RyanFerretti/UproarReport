@@ -5,8 +5,8 @@ ActiveAdmin.register Report, :namespace=>:company_admin do
   controller do
     def authorize_current_resource!
       unless request.path_parameters[:action].to_sym == :index
-        report = Report.find(params[:id])
-        unless current_user.company_id == report.company_id
+        report = Report.find(params[:id],:include => :user)
+        unless current_user.company_id == report.user.company_id
           raise Exception, "You are not authorized to view this."
         end
       end
