@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
+  after_create :create_associations!
 
   belongs_to :company
+  has_many :reports
 
   scope :rep_for_company, lambda {|company_id| where(:company_id => company_id).where(:role => COMPANY_REP)}
 
@@ -40,7 +42,6 @@ class User < ActiveRecord::Base
   end
 
   def rep_for(company)
-    puts "saving company #{company}"
     self.company_id = company.id
     self.role = COMPANY_REP
   end
@@ -48,6 +49,7 @@ class User < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
+  
 private
 
   TOUR_REP = 3
@@ -57,5 +59,13 @@ private
   
   def is_role?(r)
       role == r
+  end
+
+  def create_associations!
+    if company_rep? || tour_rep?
+      TourDate.order(:id).all.each do |td|
+        Report.create!(:tour_date => td, :user => self)
+      end
+    end
   end
 end

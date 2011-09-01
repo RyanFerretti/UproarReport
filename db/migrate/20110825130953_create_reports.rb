@@ -3,7 +3,7 @@ class CreateReports < ActiveRecord::Migration
     create_table :reports do |t|
       t.text :description
       t.references :tour_date
-      t.references :company
+      t.references :user
       t.timestamps
     end
   end

@@ -5,15 +5,15 @@ ActiveAdmin.register Report, :namespace=>:company_admin do
   controller do
     def authorize_current_resource!
       unless request.path_parameters[:action].to_sym == :index
-        report = Report.find(params[:id])
-        unless current_user.company_id == report.company_id
+        report = Report.find(params[:id],:include => :user)
+        unless current_user.company_id == report.user.company_id
           raise Exception, "You are not authorized to view this."
         end
       end
     end
     
     def scoped_collection
-      Report.for_company(current_user.company_id)
+      Report.for_company(current_user.company_id).published
     end
   end
 

@@ -1,4 +1,7 @@
 class TourDate < ActiveRecord::Base
+
+  has_many :tour_reports
+
   attr_accessible :city, :state, :venue, :date
 
   validates_presence_of :city
