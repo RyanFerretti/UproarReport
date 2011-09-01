@@ -4,6 +4,8 @@ class Report < ActiveRecord::Base
 
   has_many :pictures
 
+  scope :published, where(:state => :published)
+
   before_create :build_url_hash!
   after_create :create_associations!
   after_update { |r| r.start if r.not_started? }
@@ -12,7 +14,7 @@ class Report < ActiveRecord::Base
 
   validates_presence_of :tour_date, :user
 
-  scope :for_company, lambda{|c_id| joins(:users).where("users.id = ?",c_id) }
+  scope :for_company, lambda{|c_id| joins(:user).where("users.company_id = ?",c_id) }
   scope :for_user, lambda{|u_id| where(:user_id => u_id) }
 
   state_machine :state, :initial => :not_started do

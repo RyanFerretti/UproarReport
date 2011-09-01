@@ -13,7 +13,7 @@ ActiveAdmin.register Report, :namespace=>:company_admin do
     end
     
     def scoped_collection
-      Report.for_company(current_user.company_id)
+      Report.for_company(current_user.company_id).published
     end
   end
 

@@ -26,8 +26,8 @@ class Picture < ActiveRecord::Base
   attr_accessible :report_id, :image, :image_file_name, :image_content_type, :image_file_size, :image_updated_at
 
   def logo_path
-    report = Report.find(self.report_id, :include => :company)
-    report.company.logo.path
+    report = Report.find(self.report_id, :include => {:user => :company})
+    report.user.company.logo.path
   end
 
 end
