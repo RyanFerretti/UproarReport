@@ -5,7 +5,7 @@ class Picture < ActiveRecord::Base
   has_attached_file :image,
                     :processors => [:watermark],
                     :styles => lambda { |attachment| {
-                        :thumb => "260x195",
+                        :thumb => ["260x195",:png],
                         :watermarked => {
                             :geometry => '800x600>',
                             :watermark_path => attachment.instance.logo_path
@@ -23,11 +23,10 @@ class Picture < ActiveRecord::Base
 
 
   validates_attachment_presence :image
-  attr_accessible :report_id, :image, :image_file_name, :image_content_type, :image_file_size, :image_updated_at
+  attr_accessible :report_id, :image, :image_file_name, :image_content_type, :image_file_size, :image_updated_at, :logo_path
 
   def logo_path
-    report = Report.find(self.report_id, :include => {:user => :company})
-    report.user.company.logo.path
+    self.logo_path || Report.find(self.report_id, :include => {:user => :company}).user.company.logo.path
   end
-
+  
 end
