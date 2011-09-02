@@ -25,7 +25,7 @@ class Report < ActiveRecord::Base
       transition :in_progress => :published
     end
     after_transition :on => :publish do |report|
-      if user.tour_rep?
+      if report.user.tour_rep?
         PublishedReportMailer.tour_report_published_email(report).deliver
       else
         PublishedReportMailer.company_report_published_email(report).deliver

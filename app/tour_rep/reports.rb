@@ -13,7 +13,7 @@ ActiveAdmin.register Report, :namespace=>:tour_rep do
     end
     
     def scoped_collection
-      Report.for_company(current_user.company_id)
+      Report.for_user(current_user.id)
     end
   end
 
@@ -24,14 +24,14 @@ ActiveAdmin.register Report, :namespace=>:tour_rep do
   end
 
   action_item :only => :show do
-    link_to "Publish", publish_company_rep_report_path(params[:id]), :method => :put
+    link_to "Publish", publish_tour_rep_report_path(params[:id]), :method => :put
   end
 
   index do
     column :tour_date
     column("State") {|report| status_tag(report.state) }
     column "Actions" do |report|
-      raw "#{link_to "View", company_rep_report_path(report)} #{link_to "Edit", edit_company_rep_report_path(report)}"
+      raw "#{link_to "View", tour_rep_report_path(report)} #{link_to "Edit", edit_tour_rep_report_path(report)}"
     end
   end
 
