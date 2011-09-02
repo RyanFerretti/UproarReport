@@ -5,9 +5,9 @@ class UploadPictureController < ApplicationController
     if current_user.is_tour_rep?
       @report = Report.find(params[:report_id])
       Company.all.each do |c|
-        @picture = Picture.create!(:report_id => params[:report_id], :image => params[:picture][:image], :logo_path => c.logo.path)
+        @picture = Picture.create!(:report_id => params[:report_id], :image => params[:picture][:image], :logo_path => c.logo.path, :company_id => c.id)
       end
-        redirect_to edit_tour_rep_report_url(@report)
+      redirect_to edit_tour_rep_report_url(@report)
     else
       @report = Report.find(params[:report_id], :include => {:user => :company})
       @picture = Picture.new(:report_id => params[:report_id], :image => params[:picture][:image])

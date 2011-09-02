@@ -16,7 +16,7 @@ class Picture < ActiveRecord::Base
 
 
   validates_attachment_presence :image
-  attr_accessible :report_id, :image, :image_file_name, :image_content_type, :image_file_size, :image_updated_at, :logo_path
+  attr_accessible :report_id, :image, :image_file_name, :image_content_type, :image_file_size, :image_updated_at, :logo_path, :company_id
 
   def logo_path
     self.logo_path || Report.find(self.report_id, :include => {:user => :company}).user.company.logo.path

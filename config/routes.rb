@@ -5,6 +5,7 @@ UproarReport::Application.routes.draw do
 
   # galleries
   get "/tour/pictures/:report_hash" => "tour/pictures#index", :as => :public_tour_pictures
+  get "/tour/pictures/:company_id/:report_hash" => "tour/pictures#index", :as => :public_tour_pictures_for_company
 
   devise_for :users, ActiveAdmin::Devise.config
 

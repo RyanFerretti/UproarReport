@@ -8,12 +8,17 @@ class PublishedReportMailer < ActionMailer::Base
     end
   end
 
-  def tour_report_published_email(report)
-    emails = User.where(:role => User::COMPANY_ADMIN).map(:email)
-    contacts = EmailContact.where("email IS NOT NULL").map(:email)
-    contacts = contacts.concat emails
-    unless contacts.empty?
-      mail(:to => contacts.select{|c|!c.blank?}, :subject => report.tour_date.full_name)
+  def tour_report_published_email(r)
+    @report = r
+    emails = {}
+
+    Company.all.each{|c|emails[c.id]=[]}
+    User.where(:role => User::COMPANY_ADMIN).each{|u| emails[u.company_id] << u.email}
+    EmailContact.where("email IS NOT NULL").each{|c| emails[c.company_id] << c.email}
+
+    emails.keys.each do |k|
+      @company_id = k
+      mail(:to => emails[k].select{|c|!c.blank?}, :subject => @report.tour_date.full_name)
     end
   end
 end
