@@ -35,5 +35,13 @@ ActiveAdmin.register Report, :namespace=>:company_rep do
     end
   end
 
+
+  form do |f|
+    f.inputs "Details" do
+      f.input :description
+    end
+    f.buttons
+  end
+
   sidebar :upload_pictures, :only => :edit, :partial => "/upload_picture/uploader"
 end

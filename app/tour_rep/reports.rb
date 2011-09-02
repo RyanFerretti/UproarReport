@@ -1,4 +1,4 @@
-ActiveAdmin.register Report, :namespace=>:company_rep do
+ActiveAdmin.register Report, :namespace=>:tour_rep do
 
   actions :index, :show, :edit, :update, :publish
 
