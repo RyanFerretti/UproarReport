@@ -42,6 +42,11 @@ unless Rails.env.production?
   Company.create!(:name => "Ernie Ball")
   Company.create!(:name => "Zippo")
 
+  Company.all.each do |company|
+    company.logo = File.open(File.join("#{Rails.root}","test","logos","#{company.name}.png"))
+    company.save!
+  end
+
   User.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password', :first_name => "admin", :last_name => "person", :role => User::ADMIN)
   User.create!(:email => 'company_admin@example.com', :password => 'password', :password_confirmation => 'password', :first_name => "company", :last_name => "admin", :role => User::COMPANY_ADMIN, :company_id => c.id)
   User.create!(:email => 'company_rep@example.com', :password => 'password', :password_confirmation => 'password', :first_name => "company", :last_name => "rep", :role => User::COMPANY_REP, :company_id => c.id)
