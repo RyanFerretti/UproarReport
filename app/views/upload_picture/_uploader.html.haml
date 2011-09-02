@@ -6,5 +6,5 @@
         <input class="submit" id="pictures_upload" name="commit" type="submit" value="Upload Picture"/>
   = f.inputs do
     - @report.pictures.each do |picture|
-      = image_tag picture.image.url(:watermarked)
+      = image_tag picture.image.url(:thumb)
 
