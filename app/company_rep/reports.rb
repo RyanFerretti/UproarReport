@@ -44,4 +44,12 @@ ActiveAdmin.register Report, :namespace=>:company_rep do
   end
 
   sidebar :upload_pictures, :only => :edit, :partial => "/upload_picture/uploader"
+
+  show :title => :full_name do
+      h3 status_tag(report.state)
+      div do
+        simple_format report.description
+      end
+      render  "/shared/show_images"
+  end
 end

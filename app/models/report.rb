@@ -36,6 +36,10 @@ class Report < ActiveRecord::Base
     end
   end
 
+  def full_name
+    tour_date.full_name
+  end
+
 private
 
   def create_associations!
