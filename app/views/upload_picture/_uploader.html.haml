@@ -5,6 +5,9 @@
       %li.commit
         <input class="submit" id="pictures_upload" name="commit" type="submit" value="Upload Picture"/>
   = f.inputs do
-    - @report.pictures.each do |picture|
-      = image_tag picture.image.url(:thumb)
-
+    - if @report.user.tour_rep?
+      - @report.pictures.where(:company_id => Company.first.id).each do |picture|
+        = image_tag picture.image.url(:thumb)
+    - else
+      - @report.pictures.each do |picture|
+        = image_tag picture.image.url(:thumb)
