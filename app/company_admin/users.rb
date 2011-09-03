@@ -1,6 +1,6 @@
 #https://github.com/gregbell/active_admin/issues/272
 ActiveAdmin.register User, :namespace=>:company_admin, :as => "Representatives" do
-  #menu :label => "Representatives"
+  
   config.clear_sidebar_sections!
 
   controller do

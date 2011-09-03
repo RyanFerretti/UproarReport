@@ -1,6 +1,9 @@
 ActiveAdmin.register Report, :namespace=>:company_admin do
+  menu :label => "Published Reports"
 
   actions :index, :show
+
+  filter :tour_date
 
   controller do
     def authorize_current_resource!

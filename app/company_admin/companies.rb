@@ -1,5 +1,6 @@
 ActiveAdmin.register Company, :namespace=>:company_admin do
-
+  menu :label => "Company Details"
+  
   actions :edit, :update, :show
 
   controller do
