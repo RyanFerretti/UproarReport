@@ -27,5 +27,12 @@ ActiveAdmin.register Report, :namespace=>:company_admin do
       link_to "View", company_admin_report_path(report)
     end
   end
-  
+
+  show :title => :full_name do
+      h3 status_tag(report.state)
+      div do
+        simple_format report.description
+      end
+      render  "/shared/show_images"
+  end
 end
