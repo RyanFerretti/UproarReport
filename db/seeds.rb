@@ -43,7 +43,7 @@ unless Rails.env.production?
   Company.create!(:name => "Zippo")
 
   Company.all.each do |company|
-    company.logo = File.open(File.join("#{Rails.root}","test","logos","#{company.name}.png"))
+    company.logo = File.open(File.join("#{Rails.root}","public","logos","#{company.name}.png"))
     company.save!
   end
 
