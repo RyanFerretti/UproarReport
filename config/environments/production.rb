@@ -47,6 +47,8 @@ UproarReport::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
+  config.cache_store = :dalli_store
+
   Paperclip.options[:swallow_stderr] = false
   Paperclip.options[:command_path] = "/usr/bin"
 end
