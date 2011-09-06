@@ -15,7 +15,8 @@ ActiveAdmin.register User, :namespace=>:admin do
       f.input :email
       f.input :first_name
       f.input :last_name
-      f.input :role, :as => :select, :collection => User.roles, :prompt => "Select a Role"
+      f.input :role, :as => :select, :collection => User.roles, :prompt => "Select a Role", :input_html => {:class => :admin_role_select}
+      f.input :company_id, :as => :select, :collection => Company.all, :prompt => "Select a Company", :input_html => {:class => :admin_company_select}
     end
     f.buttons
   end
