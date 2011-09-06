@@ -14,6 +14,11 @@ class Company < ActiveRecord::Base
   has_attached_file :logo,
                     :styles => { :original => "140x90#" },
                     :storage => ENV['S3_BUCKET'] ? :s3 : :filesystem,
+                    :s3_credentials => {
+                      :access_key_id => ENV['S3_KEY'],
+                      :secret_access_key => ENV['S3_SECRET']
+                    },
+                    :bucket => ENV['S3_BUCKET'],
                     :path => lambda { |path| ENV['S3_BUCKET'] ? "watermarks/#{path.instance.name.parameterize}/logo.:extension" : ":rails_root/public/images/watermarks/#{path.instance.name.parameterize}/logo.:extension" },
                     :url => lambda { |url| "/images/watermarks/#{url.instance.name.parameterize}/logo.:extension" }
 
