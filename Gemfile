@@ -9,9 +9,11 @@ gem 'jquery-rails'
 #gem 'paperclip'
 gem "paperclip", :git => "git://github.com/patshaughnessy/paperclip.git"
 gem 'remotipart'
+# heroku
 gem 'heroku'
-gem 'remotipart'
-
+gem 'dalli'
+gem 'hoptoad_notifier'
+gem 'aws-s3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

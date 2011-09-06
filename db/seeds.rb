@@ -42,8 +42,10 @@ unless Rails.env.production?
   Company.create!(:name => "Ernie Ball")
   Company.create!(:name => "Zippo")
 
+  puts "#{Company.count} companies created"
+
   Company.all.each do |company|
-    company.logo = File.open(File.join("#{Rails.root}","test","logos","#{company.name}.png"))
+    company.logo = File.open(File.join("#{Rails.root}","public","logos","#{company.name}.png"))
     company.save!
   end
 
