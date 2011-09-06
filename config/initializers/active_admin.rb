@@ -89,4 +89,7 @@ ActiveAdmin.setup do |config|
   # Add more javascripts
   config.javascripts << "jquery.iframe-transport.js"
   config.javascripts << "jquery.remotipart.js"
+  config.javascripts << "slimbox2.js"
+
+  config.stylesheets << "slimbox/slimbox2.css"
 end
