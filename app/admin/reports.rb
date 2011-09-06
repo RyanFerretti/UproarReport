@@ -1,7 +1,7 @@
 ActiveAdmin.register Report do
   index do
     column :tour_date
-    column :company
+    column :user
     default_actions if current_user.admin?
   end
 
