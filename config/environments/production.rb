@@ -51,4 +51,6 @@ UproarReport::Application.configure do
 
   Paperclip.options[:swallow_stderr] = false
   Paperclip.options[:command_path] = "/usr/bin"
+
+  config.action_mailer.default_url_options = { :host => 'reports.rockstaruproar.com' }
 end
