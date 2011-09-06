@@ -1,0 +1,13 @@
+= semantic_form_for [:company_rep, @report, Picture.new], :html => {:multipart => true} do |f| #:remote => true
+  = f.inputs do
+    = f.input :image, :as => :file
+    %ol
+      %li.commit
+        <input class="submit" id="pictures_upload" name="commit" type="submit" value="Upload Picture"/>
+  = f.inputs do
+    - if @report.user.tour_rep?
+      - @report.pictures.where(:company_id => Company.first.id).each do |picture|
+        = image_tag picture.image.url(:thumb)
+    - else
+      - @report.pictures.each do |picture|
+        = image_tag picture.image.url(:thumb)

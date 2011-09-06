@@ -22,5 +22,13 @@ UproarReport::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+
+  # Paperclip Stuff
+  Paperclip.options[:swallow_stderr] = false
+  Paperclip.options[:log_command] = true
+  Paperclip.options[:command_path] = "DYLD_LIBRARY_PATH='/Users/Ryan/Developement/Libraries/ImageMagick-6.6.4/lib' /Users/Ryan/Developement/Libraries/ImageMagick-6.6.4/bin"
 end
 
