@@ -5,7 +5,8 @@ ActiveAdmin.register User, :namespace=>:company_admin, :as => "Representatives" 
 
   controller do
     def authorize_current_resource!
-      unless request.path_parameters[:action].to_sym == :index
+      current_action = request.path_parameters[:action].to_sym
+      unless current_action == :index || current_action == :new
         user = User.find(params[:id])
         unless current_user.company_id == user.company_id
           raise Exception, "You are not authorized to view this."
