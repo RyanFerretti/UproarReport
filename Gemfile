@@ -11,7 +11,8 @@ gem "paperclip", :git => "git://github.com/patshaughnessy/paperclip.git"
 gem 'remotipart'
 gem 'heroku'
 gem 'remotipart'
-
+gem 'dalli'
+gem 'hoptoad_notifier'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
