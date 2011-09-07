@@ -1,5 +1,5 @@
 class PublishedReportMailer < ActionMailer::Base
-  default :from => "reports@rockstaruproar.com"
+  default :from => "Uproar Reports <reports@rockstaruproar.com>"
 
   def company_report_published_email(report)
     @report = report
