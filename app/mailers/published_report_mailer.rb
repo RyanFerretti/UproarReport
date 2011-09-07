@@ -3,9 +3,8 @@ class PublishedReportMailer < ActionMailer::Base
 
   def company_report_published_email(report)
     contacts = report.user.company.email_contacts
-    unless contacts.empty?
-      mail(:to => contacts.select{|c|!c.email.blank?}.map(&:email), :subject => report.tour_date.full_name)
-    end
+    contacts << report.user.company.admin
+    mail(:to => contacts.select{|c|!c.email.blank?}.map(&:email), :subject => report.tour_date.full_name)
   end
 
   def tour_report_published_email(r)
