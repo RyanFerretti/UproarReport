@@ -14,7 +14,7 @@ class Report < ActiveRecord::Base
 
   validates_presence_of :tour_date, :user
 
-  scope :for_company, lambda{|c_id| joins(:user).where("users.company_id = ?",c_id) }
+  scope :for_company, lambda{|c_id| joins(:user).where("users.company_id = ?",c_id).order(:id) }
   scope :for_user, lambda{|u_id| where(:user_id => u_id) }
 
   state_machine :state, :initial => :not_started do

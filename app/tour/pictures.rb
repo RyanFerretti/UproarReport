@@ -19,6 +19,6 @@ ActiveAdmin.register Picture, :namespace=>:tour do
   end
 
   index :as => :grid do |picture|
-    link_to(image_tag(picture.image.url(:thumb)), "#")
+    link_to(image_tag(picture.image.url(:thumb)), picture.image.url(:watermarked), :rel => "lightbox[gallery]")
   end
 end
