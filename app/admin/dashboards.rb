@@ -4,12 +4,14 @@ ActiveAdmin::Dashboards.build do
   # rendered on the dashboard in the context of the view. So just
   # return the content which you would like to display.
 
-  section "Crap", :namespace=>:admin do
+  section "Recently Published Reports", :namespace=>:admin do
     ul do
-      li "Hello Admin!"
+      Report.recently_published(5).collect do |report|
+        li link_to(report.full_name, admin_report_path(report))
+      end
     end
   end
-  
+
   # == Simple Dashboard Section
   # Here is an example of a simple dashboard section
   #

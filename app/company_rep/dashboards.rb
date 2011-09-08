@@ -3,7 +3,13 @@ ActiveAdmin::Dashboards.build do
   # Define your dashboard sections here. Each block will be
   # rendered on the dashboard in the context of the view. So just
   # return the content which you would like to display.
-  
+
+  section "Recent Tour Date Reports", :namespace=>:company_rep do
+    ul do
+      render '/shared/recent_reports_for_rep'
+    end
+  end
+
   # == Simple Dashboard Section
   # Here is an example of a simple dashboard section
   #

@@ -38,7 +38,8 @@ ActiveAdmin.register User, :namespace=>:company_admin, :as => "Representatives" 
 
   index do
     column :email
-    column :current_sign_in_at
+    column :first_name
+    column :last_name
     column :last_sign_in_at
     column :sign_in_count
     default_actions

@@ -21,5 +21,5 @@ ActiveAdmin.register Company, :namespace=>:company_admin do
     end
   end
 
-  form :partial => "shared/companies_form"
+  form :partial => "shared/company_admin_companies_form"
 end

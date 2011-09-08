@@ -1,0 +1,3 @@
+- Report.for_company(current_user.company_id).recently_published(5).collect do |report|
+  %li
+    = link_to(report.full_name, company_admin_report_path(report))
