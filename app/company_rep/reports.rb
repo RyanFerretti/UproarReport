@@ -2,6 +2,11 @@ ActiveAdmin.register Report, :namespace=>:company_rep do
 
   actions :index, :show, :edit, :update, :publish
 
+  filter :tour_date
+  filter :state, :as => :select, :collection => proc { {"Not Started" => "not started","In Progress" => "in progress","Published" => "published"} }
+  filter :description
+  filter :published_at
+
   controller do
     def authorize_current_resource!
       unless request.path_parameters[:action].to_sym == :index
@@ -13,7 +18,7 @@ ActiveAdmin.register Report, :namespace=>:company_rep do
     end
     
     def scoped_collection
-      Report.for_company(current_user.company_id)
+      Report.for_user(current_user.id)
     end
   end
 

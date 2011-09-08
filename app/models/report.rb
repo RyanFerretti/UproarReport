@@ -16,6 +16,7 @@ class Report < ActiveRecord::Base
   scope :for_user, lambda{|u_id| where(:user_id => u_id) }
   scope :published, where(:state => :published)
   scope :recently_published, lambda {|num| where('published_at >= ?', Time.now - 1.week).limit(num) }
+  scope :for_recent_tour_dates, lambda {|num| joins(:tour_date).where('tour_dates.date <= ? and tour_dates.date >= ?', Time.now,Time.now - 1.week).limit(num) }
 
   state_machine :state, :initial => :not_started do
     event :start do
