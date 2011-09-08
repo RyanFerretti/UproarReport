@@ -2,7 +2,7 @@ ActiveAdmin.register Report do
 
   filter :tour_date
   filter :user
-  filter :state, :as => :select, :collection => proc { {"Not Started" => "not started","In Progress" => "in progress","Published" => "published"} } #proc { ["not started","in progress","published"] }
+  filter :state, :as => :select, :collection => proc { {"Not Started" => "not started","In Progress" => "in progress","Published" => "published"} }
 
   index do
     column "Tour Date" do |report|

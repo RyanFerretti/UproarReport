@@ -4,9 +4,9 @@ ActiveAdmin::Dashboards.build do
   # rendered on the dashboard in the context of the view. So just
   # return the content which you would like to display.
 
-  section "Crap", :namespace=>:company_admin do
+  section "Recently Published Reports", :namespace=>:company_admin do
     ul do
-      li "Hello Company Admin!"
+      render '/shared/recent_reports_for_company'
     end
   end
   
