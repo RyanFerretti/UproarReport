@@ -4,8 +4,6 @@ class Report < ActiveRecord::Base
 
   has_many :pictures
 
-  scope :published, where(:state => :published)
-
   before_create :build_url_hash!
   after_create :create_associations!
   after_update { |r| r.start if r.not_started? }
@@ -16,6 +14,8 @@ class Report < ActiveRecord::Base
 
   scope :for_company, lambda{|c_id| joins(:user).where("users.company_id = ?",c_id).order(:id) }
   scope :for_user, lambda{|u_id| where(:user_id => u_id) }
+  scope :published, where(:state => :published)
+  scope :recently_published, lambda {|num| where('published_at >= ?', Time.now - 1.week).limit(num) }
 
   state_machine :state, :initial => :not_started do
     event :start do
@@ -23,6 +23,9 @@ class Report < ActiveRecord::Base
     end
     event :publish do
       transition :in_progress => :published
+    end
+    before_transition :on => :publish do |report|
+      report.published_at = Time.now
     end
     after_transition :on => :publish do |report|
       if report.user.tour_rep?
