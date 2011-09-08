@@ -12,7 +12,7 @@ class Company < ActiveRecord::Base
   validates_presence_of :name
 
   has_attached_file :logo,
-                    :styles => { :original => "140x90#" },
+                    :styles => { :original => ["140x90#",:png]},
                     :storage => ENV['S3_BUCKET'] ? :s3 : :filesystem,
                     :s3_credentials => {
                       :access_key_id => ENV['S3_KEY'],
