@@ -5,7 +5,7 @@ ActiveAdmin.register Report, :namespace=>:company_admin do
 
   filter :tour_date
   #filter :user, :as => :select, :collection => proc { User.where(:company_id => current_user.company_id) } FIXME!!!!
-  filter :state, :as => :select, :collection => proc { {"Not Started" => "not started","In Progress" => "in progress","Published" => "published"} }
+  #filter :state, :as => :select, :collection => proc { {"Not Started" => "not started","In Progress" => "in progress","Published" => "published"} }
   filter :description
   filter :published_at
 
