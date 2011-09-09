@@ -30,4 +30,12 @@ ActiveAdmin.register Report do
   action_item :only => :show do
     link_to "Publish", publish_admin_report_path(params[:id]), :method => :put
   end
+
+  show :title => :full_name do
+    h3 status_tag(report.state)
+    div do
+      simple_format report.description
+    end
+    render  "/shared/show_images"
+  end
 end
