@@ -21,7 +21,7 @@ class Picture < ActiveRecord::Base
   attr_accessible :report_id, :image, :image_file_name, :image_content_type, :image_file_size, :image_updated_at, :company
 
   def image_styles
-    style = { :watermarked => { :geometry => '800x600>', :watermark_path => company.logo.path } }
+    style = { :watermarked => { :geometry => '800x600>', :watermark_path => ENV['S3_BUCKET'] ? company.logo.url : company.logo.path } }
     style[:thumb] = ["120x120#",:png]
     style
   end
