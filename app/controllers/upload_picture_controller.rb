@@ -13,7 +13,8 @@ class UploadPictureController < ApplicationController
       @picture = Picture.new(:company => @report.user.company,:report_id => params[:report_id], :image => params[:picture][:image])
       if @picture.save
         #head :ok
-        redirect_to edit_company_rep_report_url(@report)
+        redirect_to edit_company_rep_report_url(@report) if current_user.company_rep?
+        redirect_to edit_admin_report_url(@report) if current_user.admin?
       else
         head :bad_request
       end
