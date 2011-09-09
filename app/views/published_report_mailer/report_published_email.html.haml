@@ -3,11 +3,24 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", :"http-equiv" => "Content-Type"}
   %body
-    %h1
-      A new report has been published for you to view.
     %p
-      Click
-      = link_to "here", public_tour_pictures_for_company_url(:company_id => @company_id, :report_hash => @report.public_url)
-      to view the image gallery for this tour date!
+      Date:
+      = @report.tour_date.date.strftime("%m/%d/%Y")
     %p
-      Thank you for being a part of Uproar!
+      Market:
+      = @report.tour_date.name
+    %p
+      Venue:
+      = @report.tour_date.venue
+    %p
+      = "#{@report.user.company_rep? ? "Company" : "Tour"} Rep:"
+      = @report.user.full_name
+    %p
+      Email:
+      = @report.user.email
+    %p
+      = @report.description
+    %p
+      Photo Gallery:
+      - link = public_tour_pictures_for_company_url(:company_id => @company_id, :report_hash => @report.public_url)
+      = link_to link, link
