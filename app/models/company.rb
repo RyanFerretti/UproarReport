@@ -19,8 +19,8 @@ class Company < ActiveRecord::Base
                       :secret_access_key => ENV['S3_SECRET']
                     },
                     :bucket => ENV['S3_BUCKET'],
-                    :path => lambda { |path| ENV['S3_BUCKET'] ? "watermarks/#{path.instance.name.parameterize}/logo.:extension" : ":rails_root/public/images/watermarks/#{path.instance.name.parameterize}/logo.:extension" },
-                    :url => lambda { |url| "/images/watermarks/#{url.instance.name.parameterize}/logo.:extension" }
+                    :path => lambda { |path| ENV['S3_BUCKET'] ? "watermarks/#{path.instance.name.parameterize}/logo.png" : ":rails_root/public/images/watermarks/#{path.instance.name.parameterize}/logo.png" },
+                    :url => lambda { |url| "/images/watermarks/#{url.instance.name.parameterize}/logo.png" }
 
   def admin
     find_user User::COMPANY_ADMIN
