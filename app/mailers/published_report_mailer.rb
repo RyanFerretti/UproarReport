@@ -15,7 +15,7 @@ class PublishedReportMailer < ActionMailer::Base
 
     Company.all.each{|c|emails[c.id]=[]}
     User.where(:role => User::COMPANY_ADMIN).each{|u| emails[u.company_id] << u.email}
-    EmailContact.where("email IS NOT NULL").each{|c| emails[c.company_id] << c.email}
+    EmailContact.where("email IS NOT NULL").each{|c| emails[c.company_id] << c.email unless c.email.blank?}
 
     emails.keys.each do |k|
       @company_id = k
