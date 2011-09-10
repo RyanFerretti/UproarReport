@@ -9,17 +9,9 @@ class PublishedReportMailer < ActionMailer::Base
     mail(:to => contacts, :subject => "Uproar #{report.tour_date.full_name}", :template_name => 'report_published_email')
   end
 
-  def tour_report_published_email(report)
+  def tour_report_published_email(report,company,contacts)
     @report = report
-    emails = {}
-
-    Company.all.each{|c|emails[c.id]=[]}
-    User.where(:role => User::COMPANY_ADMIN).each{|u| emails[u.company_id] << u.email}
-    EmailContact.where("email IS NOT NULL").each{|c| emails[c.company_id] << c.email unless c.email.blank?}
-
-    emails.keys.each do |k|
-      @company_id = k
-      mail(:to => emails[k].select{|c|!c.blank?}, :subject => "Uproar #{@report.tour_date.full_name}", :template_name => 'report_published_email')
-    end
+    @company_id = company.id
+    mail(:to => contacts, :subject => "Uproar #{@report.tour_date.full_name}", :template_name => 'report_published_email')
   end
 end
