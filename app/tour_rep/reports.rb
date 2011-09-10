@@ -47,7 +47,7 @@ ActiveAdmin.register Report, :namespace=>:tour_rep do
     f.buttons
   end
 
-  sidebar :upload_pictures, :only => :edit, :partial => "/upload_picture/uploader"
+  sidebar :upload_pictures, :only => :edit, :partial => "/upload_picture/tour_rep_uploader"
 
   show :title => :full_name do
       h3 status_tag(report.state)

@@ -12,10 +12,13 @@ UproarReport::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   post "/company_rep/reports/:report_id/pictures" => "upload_picture#create", :as => :company_rep_report_pictures
+  post "/tour_rep/reports/:report_id/pictures" => "upload_picture#create", :as => :tour_rep_report_pictures
   post "/admin/reports/:report_id/pictures" => "upload_picture#create", :as => :admin_report_pictures
   put "/company_rep/reports/:report_id/pictures/:picture_id" => "upload_picture#create", :as => :company_rep_update_uploaded_picture
+  put "/tour_rep/reports/:report_id/pictures/:picture_id" => "upload_picture#create", :as => :tour_rep_update_uploaded_picture
   put "/admin/reports/:report_id/pictures/:picture_id" => "upload_picture#create", :as => :admin_update_uploaded_picture
   delete "/company_rep/reports/:report_id/pictures/:picture_id" => "upload_picture#create", :as => :company_rep_delete_uploaded_picture
+  delete "/tour_rep/reports/:report_id/pictures/:picture_id" => "upload_picture#create", :as => :tour_rep_delete_uploaded_picture
   delete "/admin/reports/:report_id/pictures/:picture_id" => "upload_picture#create", :as => :admin_delete_uploaded_picture
 
   # The priority is based upon order of creation:

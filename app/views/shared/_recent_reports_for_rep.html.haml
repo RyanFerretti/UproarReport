@@ -1,3 +1,3 @@
 - Report.for_user(current_user.id).for_recent_tour_dates(5).collect do |report|
   %li
-    = link_to(report.full_name, company_rep_report_path(report))
+    = link_to(report.full_name, current_user.company_rep? ? company_rep_report_path(report) : tour_rep_report_path(report))
