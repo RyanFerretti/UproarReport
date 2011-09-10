@@ -49,6 +49,14 @@ class User < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def role_name
+    name = nil
+    User.roles.each do |k,v|
+      name = k if self.role == v
+    end
+    name
+  end
   
 private
 

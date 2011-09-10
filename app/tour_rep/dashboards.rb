@@ -4,9 +4,9 @@ ActiveAdmin::Dashboards.build do
   # rendered on the dashboard in the context of the view. So just
   # return the content which you would like to display.
 
-  section "Crap", :namespace=>:tour_rep do
+  section "Recent Tour Date Reports", :namespace=>:tour_rep do
     ul do
-      li "Hello Tour Rep!"
+      render '/shared/recent_reports_for_rep'
     end
   end
   

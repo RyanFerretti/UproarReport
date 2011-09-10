@@ -12,15 +12,15 @@ class Company < ActiveRecord::Base
   validates_presence_of :name
 
   has_attached_file :logo,
-                    :styles => { :original => "140x90#" },
+                    :styles => { :original => ["140x90>",:png]},
                     :storage => ENV['S3_BUCKET'] ? :s3 : :filesystem,
                     :s3_credentials => {
                       :access_key_id => ENV['S3_KEY'],
                       :secret_access_key => ENV['S3_SECRET']
                     },
                     :bucket => ENV['S3_BUCKET'],
-                    :path => lambda { |path| ENV['S3_BUCKET'] ? "watermarks/#{path.instance.name.parameterize}/logo.:extension" : ":rails_root/public/images/watermarks/#{path.instance.name.parameterize}/logo.:extension" },
-                    :url => lambda { |url| "/images/watermarks/#{url.instance.name.parameterize}/logo.:extension" }
+                    :path => lambda { |path| ENV['S3_BUCKET'] ? "watermarks/#{path.instance.name.parameterize}/logo.png" : ":rails_root/public/images/watermarks/#{path.instance.name.parameterize}/logo.png" },
+                    :url => lambda { |url| "/images/watermarks/#{url.instance.name.parameterize}/logo.png" }
 
   def admin
     find_user User::COMPANY_ADMIN
