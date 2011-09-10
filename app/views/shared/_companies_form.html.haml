@@ -1,5 +1,7 @@
 = semantic_form_for [user_type, @company], :html => {:multipart => true} do |f|
   = f.inputs "#{@company.name}" do
+    - if user_type == :admin
+      =f.input :name
     = image_tag(f.object.logo.url, :class => "left margin-right") rescue nil
     =f.input :logo, :as => :file
 
