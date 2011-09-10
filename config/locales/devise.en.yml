@@ -48,6 +48,6 @@ en:
       confirmation_instructions:
         subject: 'Confirmation instructions'
       reset_password_instructions:
-        subject: 'You have been Registered for Rockstar Uproar Reporting'
+        subject: "UPROAR Festival Reporting Account: %{resource.role_name}"
       unlock_instructions:
         subject: 'Unlock Instructions'

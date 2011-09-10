@@ -30,7 +30,13 @@ class Report < ActiveRecord::Base
     end
     after_transition :on => :publish do |report|
       if report.user.tour_rep?
-        PublishedReportMailer.tour_report_published_email(report).deliver
+        emails = {}
+        Company.all.each{|c|emails[c]=[]}
+        User.where(:role => User::COMPANY_ADMIN).each{|u| emails[u.company] << u.email}
+        EmailContact.where("email IS NOT NULL").each{|c| emails[c.company] << c.email unless c.email.blank?}
+        emails.keys.each do |k|
+          PublishedReportMailer.tour_report_published_email(report,k,emails[k]).deliver unless emails[k].empty?
+        end
       else
         PublishedReportMailer.company_report_published_email(report).deliver
       end

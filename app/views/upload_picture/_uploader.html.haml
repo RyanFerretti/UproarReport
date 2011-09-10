@@ -7,7 +7,7 @@
   = f.inputs do
     - if @report.user.tour_rep?
       - @report.pictures.where(:company_id => Company.first.id).each do |picture|
-        = image_tag picture.image.url(:thumb)
+        = link_to(image_tag(picture.image.url(:thumb)), picture.image.url(:watermarked), :rel => "lightbox[gallery]")
     - else
       - @report.pictures.each do |picture|
-        = image_tag picture.image.url(:thumb)
+        = link_to(image_tag(picture.image.url(:thumb)), picture.image.url(:watermarked), :rel => "lightbox[gallery]")
