@@ -1,5 +1,7 @@
 UproarReport::Application.routes.draw do
 
+  root :to => redirect("/admin/login")
+
   #match "/login" => "active_admin/devise/sessions#new"
   match "admin/logout" => "active_admin/devise/sessions#destroy", :via => :delete, :as => :destroy_admin_user_session
 
