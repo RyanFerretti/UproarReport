@@ -3,7 +3,7 @@
 Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in DeviseMailer.
-  config.mailer_sender = "reports@rockstaruproar.com"
+  config.mailer_sender = "Uproar Reports <reports@rockstaruproar.com>"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
